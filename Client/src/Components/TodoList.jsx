@@ -28,14 +28,14 @@ const TodoList = () => {
       addTodo(newTodo);
     }
     setNewTodo({ title: '', description: '', date: '' });
-    
-    setCreateTodo(false)
+
+    setCreateTodo(false)  //popup
   };
 
   const handleEdit = (id, title, description, date) => {
     setEditingTodoId(id);
-    setCreateTodo(true);
     setNewTodo({ title, description, date });
+    setCreateTodo(true); //popup
   };
 
   const handleDelete = (id) => {
@@ -48,19 +48,19 @@ const TodoList = () => {
       <div className='grid grid-cols-5 gap-5'>
         {todos.map(todo => (
           <div key={todo._id} className='bg-gray-300 rounded-2xl p-5 w-full h-fit space-y-3'>
-          <div>
-          <p className='uppercase font-semibold text-lg'>Title</p>
-          <p className='indent-2 uppercase font-semibold text-sm'>{todo.title}</p>
-          </div>
-             <div>
-             <p className='font-semibold'>Description</p>
-             <p className='indent-2'>{todo.description}</p>
-             </div>
-              <p className='font-semibold'>{todo.date}</p>
-              <div className='flex justify-between items-center space-x-3'>
+            <div>
+              <p className='uppercase font-semibold text-lg'>Title</p>
+              <p className='indent-2 uppercase font-semibold text-sm'>{todo.title}</p>
+            </div>
+            <div>
+              <p className='font-semibold'>Description</p>
+              <p className='indent-2'>{todo.description}</p>
+            </div>
+            <p className='font-semibold'>{todo.date}</p>
+            <div className='flex justify-between items-center space-x-3'>
               <button onClick={() => handleEdit(todo._id, todo.title, todo.description, todo.date)} className='bg-neutral-500 px-4 py-1 rounded-2xl'>Edit</button>
               <button onClick={() => handleDelete(todo._id)} className=' bg-red-500 rounded-2xl px-4 py-1 text-white'>Delete</button>
-              </div>
+            </div>
           </div>
         ))}
       </div>
